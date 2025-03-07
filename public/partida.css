@@ -1,0 +1,175 @@
+body {
+    background: linear-gradient(to bottom, #0f3d0f, #1e7e34);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+.navbar {
+    background-color: #1e7e34;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    height: 90px;
+    box-shadow: #155924;
+}
+
+.navbar .logo {
+    display: flex;
+    justify-content: center;
+    margin-left: 2%;
+}
+
+.navbar .logo img {
+    height: 70px;
+    cursor: pointer;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    flex: 2;
+    align-items: center;
+}
+
+.navbar li {
+    text-align: center;
+    margin-left: 20px;
+    border-left: 1px solid #ffffff;
+    padding-left: 20px;
+}
+
+.navbar li:first-child {
+    border-left: none;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar li a:hover {
+    background-color: #155924;
+    color: rgb(255, 255, 255);
+    border-radius: 10%;
+    transition: 1.5s;
+}
+
+.section {
+    display: none;
+    padding: 20px;
+    margin-top: 60px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+}
+
+#partida,
+#login,
+#sobre {
+    display: none;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+h2 {
+    color: white;
+}
+
+.card {
+    background-color: #28a745;
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+#cronometro {
+    margin-top: 30px;
+}
+
+#tempo {
+    font-size: 50px;
+    font-weight: bold;
+    color: #fff;
+}
+
+#partidas-info h4 {
+    color: white;
+    font-size: 20px;
+}
+
+#primeiro-tempo, #segundo-tempo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.btn-success, .btn-warning, .btn-danger {
+    margin: 10px;
+}
+
+.btn-cronometro {
+    background-color: #1e7e34;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+}
+
+.btn-cronometro:hover {
+    background-color:#155924; 
+    color: white;
+    transition: 1s;
+}
+
+.btn-gol {
+    background-color: #ffcb00;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 5px;
+    padding: 10px 20px;
+}
+
+.btn-gol:hover {
+    background-color: #e6a800;
+}
+
+.btn-salvar {
+    background-color: #007bff;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.progress {
+    height: 20px;
+    margin-top: 15px;
+}
+
+.progress-bar {
+    background-color: #28a745;
+}

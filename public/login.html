@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="FutStart.png" alt="Logo">
+                </a>
+            </div>
+            <ul>
+                <li><a href="partida.html">Partida</a></li>
+                <li><a href="historico.html">Histórico</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="#">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div id="partida" class="section">
+            <h2>Partida</h2>
+            <p>Conteúdo sobre as partidas.</p>
+        </div>
+
+        <div id="login" class="section">
+            <h2>Login</h2>
+            <p>Conteúdo sobre o login.</p>
+        </div>
+
+        <div id="sobre" class="section">
+            <h2>Sobre</h2>
+            <p>Conteúdo sobre a página.</p>
+        </div>
+
+    <div class="container">
+        <div class="card login-card">
+            <h2>Login</h2>
+            <form id="login-form">
+                <input type="email" id="email" placeholder="E-mail" required>
+                <input type="password" id="password" placeholder="Senha" required>
+                <button type="submit" class="btn-cronometro">Entrar</button>
+                <p id="error-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+
+</html>
