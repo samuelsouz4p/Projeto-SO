@@ -21,41 +21,32 @@
 
             <ul>
                 <li><a href="partida.html">Partida</a></li>
-                <li><a href="historico.html">Histórico</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="#">Sobre</a></li>
+                <li><a href="pagamento.html">Pagamento</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
             </ul>
         </nav>
-
-        <div id="partida" class="section">
-            <h2>Partida</h2>
-            <p>Conteúdo sobre as partidas.</p>
-        </div>
-
-        <div id="login" class="section">
-            <h2>Login</h2>
-            <p>Conteúdo sobre o login.</p>
-        </div>
-
-        <div id="sobre" class="section">
-            <h2>Sobre</h2>
-            <p>Conteúdo sobre a página.</p>
-        </div>
-
         <div class="card p-4 mt-3">
             <h4>Nova Partida</h4>
             <form id="formPartida">
                 <div class="mb-3">
-                    <label class="form-label">Título</label>
-                    <input type="text" id="titulo" class="form-control" required>
+                    <label class="form-label">Nome</label>
+                    <input type="text" id="titulo" placeholder="Informe seu nome completo" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Local</label>
-                    <input type="text" id="local" class="form-control" required>
+                    <label class="form-label">Quadra</label>
+                    <select id="quadra" class="form-control" required>
+                        <option value="Quadra 1">Quadra 1</option>
+                        <option value="Quadra 2">Quadra 2</option>
+                    </select>
+                    
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Data e Hora</label>
                     <input type="datetime-local" id="dataHora" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">E-mail</label>
+                    <input type="email" id="email" placeholder="Informe seu e-mail" class="form-control" required>
                 </div>
                 <button type="submit" class="btn btn-success">Criar Partida</button>
             </form>

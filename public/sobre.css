@@ -2,8 +2,8 @@ body {
     background: linear-gradient(to bottom, #0f3d0f, #1e7e34);
     font-family: 'Arial', sans-serif;
     text-align: center;
-    padding: 20px;
-    margin-top: 60px;
+    padding: 0;
+    margin: 0;
 }
 
 .navbar {
@@ -43,11 +43,9 @@ body {
     gap: 30px; /* Espaçamento entre os botões */
 }
 
-
-
-.navbar li{
+.navbar li {
     background-color: #28a745;
-    border-radius:1ch;
+    border-radius: 1ch;
 }
 
 .navbar li a {
@@ -58,62 +56,30 @@ body {
     font-weight: bold;
 }
 
-.container {
-    max-width: 800px;
-    margin: auto;
-}
-
+/* Card - Centralizado abaixo da Navbar */
 .card {
     background-color: #28a745;
     color: white;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    text-align: left;
-    margin-bottom: 15px;
-    margin-top: 25px;
+    text-align: center;
+    margin: auto; /* Centraliza o card */
+    margin-top: 200px; /* Dá um espaço entre a navbar e o card */
+    width: 50%; /* Controla a largura do card */
 }
 
-.card-verde {
-    background-color: #1e7e34; /* Cor verde */
-    color: white; /* Texto branco */
-}
-
-.btn-success {
-    background-color: #1e7e34;
-    border: none;
+.card-title {
     font-weight: bold;
-    text-transform: uppercase;
+    font-size: 24px;
 }
 
-.btn-success:hover {
-    background-color: #155924;
+.card-text {
+    font-size: 20px;
+    margin-bottom: 30px;
 }
 
-.btn-danger {
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.tittle {
-    justify-content: space-between;
-    align-items: center;
-}
-
-.btn-sm {
-    margin-left: 10px;
-    border: none;
-}
-
-.list-group {
-    margin-top: 10px;
-}
-
-.list-group-item {
-    background-color:#1e7e34;
+.text-muted {
+    font-size: 15px;
     color: white;
-    border-radius: 10px;
-}
-.card-header{
-    background-color: #1e7e34;
 }

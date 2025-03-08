@@ -2,6 +2,26 @@ document.addEventListener('DOMContentLoaded', function () {
     const formPartida = document.getElementById('formPartida');
     const listaPartidas = document.getElementById('listaPartidas');
 
+    const configurarDataHoraMinima = () => {
+        const dataHoraInput = document.getElementById('dataHora');
+
+        // Obtém a data e hora atuais no formato YYYY-MM-DDThh:mm
+        const agora = new Date();
+        const ano = agora.getFullYear();
+        const mes = String(agora.getMonth() + 1).padStart(2, '0'); // Meses começam de 0
+        const dia = String(agora.getDate()).padStart(2, '0');
+        const hora = String(agora.getHours()).padStart(2, '0');
+        const minuto = String(agora.getMinutes()).padStart(2, '0');
+
+        const dataHoraAtual = `${ano}-${mes}-${dia}T${hora}:${minuto}`;
+
+        // Definindo a data mínima
+        dataHoraInput.setAttribute('min', dataHoraAtual);
+    };
+
+    // Configurar a data mínima ao carregar a página
+    configurarDataHoraMinima();
+
     // Função para carregar partidas
     const carregarPartidas = async () => {
         try {
@@ -11,54 +31,54 @@ document.addEventListener('DOMContentLoaded', function () {
             listaPartidas.innerHTML = ''; // Limpa a lista antes de renderizar
 
             partidas.forEach(partida => {
-                const li = document.createElement('li');
-                li.classList.add('list-group-item', 'mb-3', 'p-3', 'border', 'rounded');
+                const card = document.createElement('div');
+                card.classList.add('card', 'mb-3', 'shadow-sm'); // Card com uma sombra para destacar
+                card.classList.add('card-verde'); // Exemplo: usando 'card-verde'
+                card.innerHTML = `
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="card-title">${partida.nome}</h4>
+                        <button class="btn btn-danger btn-sm remover-partida" data-id="${partida.id}">
+                            Remover Partida
+                        </button>
+                    </div>
 
-                li.innerHTML = `
-                    <div>
-                        <div class="tittle d-flex justify-content-between align-items-center">
-                            <h5>${partida.nome}</h5>
-                            <button class="btn btn-danger btn-sm remover-partida" data-id="${partida.id}">
-                                Remover Partida
-                            </button>
-                        </div>
-                        <hr>
-                        <p><strong>Local:</strong> ${partida.local}</p>
+                    <div class="card-body">
+                        <p><strong>Quadra:</strong> ${partida.quadra}</p>
                         <p><strong>Data e Hora:</strong> ${new Date(partida.data).toLocaleString()}</p>
-                    </div>
 
-                    <!-- Botão para abrir o formulário -->
-                    <button class="btn btn-success btn-sm mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#formJogador_${partida.id}">
-                        Adicionar Jogador
-                    </button>
+                        <!-- Botão para abrir o formulário -->
+                        <button class="btn btn-success btn-sm mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#formJogador_${partida.id}">
+                            Adicionar Jogador
+                        </button>
 
-                    <!-- Formulário dentro do collapse -->
-                    <div class="collapse mt-2" id="formJogador_${partida.id}">
-                        <div class="card card-body">
-                            <form id="formAdicionarJogador_${partida.id}">
-                                <input type="text" id="nomeJogador_${partida.id}" class="form-control mb-2" placeholder="Nome do Jogador" required>
-                                <input type="text" id="telefoneJogador_${partida.id}" class="form-control mb-2" placeholder="Telefone (--) - ---- ----" required>
-                                <button type="submit" class="btn btn-success">Salvar</button>
-                            </form>
+                        <!-- Formulário dentro do collapse -->
+                        <div class="collapse mt-2" id="formJogador_${partida.id}">
+                            <div class="card card-body">
+                                <form id="formAdicionarJogador_${partida.id}">
+                                    <input type="text" id="nomeJogador_${partida.id}" class="form-control mb-2" placeholder="Nome do Jogador" required>
+                                    <input type="text" id="telefoneJogador_${partida.id}" class="form-control mb-2" placeholder="Telefone (--) - ---- ----" required>
+                                    <button type="submit" class="btn btn-success">Salvar</button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Lista de jogadores -->
-                    <ul class="list-group list-group-flush mt-2" id="listaJogadores_${partida.id}">
-                        ${partida.jogadores.length > 0
-                        ? partida.jogadores.map(jogador => `
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span>${jogador.nome} - ${jogador.telefone}</span>
-                                    <button class="btn btn-danger btn-sm remover-jogador" data-id="${partida.id}" data-telefone="${jogador.telefone}">
-                                        X
-                                    </button>
-                                </li>
-                            `).join('')
-                        : '<li class="list-group-item text-muted">Nenhum jogador cadastrado</li>'}
-                    </ul>
+                        <!-- Lista de jogadores -->
+                        <ul class="list-group list-group-flush mt-2" id="listaJogadores_${partida.id}">
+                            ${partida.jogadores.length > 0
+                            ? partida.jogadores.map(jogador => ` 
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <span>${jogador.nome} - ${jogador.telefone}</span>
+                                        <button class="btn btn-danger btn-sm remover-jogador" data-id="${partida.id}" data-telefone="${jogador.telefone}">
+                                            X
+                                        </button>
+                                    </li>
+                                `).join('') 
+                            : '<li class="list-group-item text-muted">Nenhum jogador cadastrado</li>'}
+                        </ul>
+                    </div>
                 `;
 
-                listaPartidas.appendChild(li);
+                listaPartidas.appendChild(card);
 
                 // Evento para adicionar jogador
                 document.getElementById(`formAdicionarJogador_${partida.id}`).addEventListener('submit', async (e) => {
@@ -86,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 // Adicionando evento para remover partida
-                li.querySelector('.remover-partida').addEventListener('click', async () => {
+                card.querySelector('.remover-partida').addEventListener('click', async () => {
                     const partidaId = partida.id;
 
                     try {
@@ -105,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 // Adicionando eventos para remover jogadores
-                li.querySelectorAll('.remover-jogador').forEach(botao => {
+                card.querySelectorAll('.remover-jogador').forEach(botao => {
                     botao.addEventListener('click', async () => {
                         const partidaId = botao.getAttribute('data-id');
                         const telefoneJogador = botao.getAttribute('data-telefone');
@@ -131,54 +151,64 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    // Função para adicionar jogador
-    const adicionarJogador = async (partidaId, nome, telefone) => {
-        try {
-            const response = await fetch(`http://localhost:3000/partidas/${partidaId}/jogador`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ nome, telefone })
-            });
+    // Função para verificar se a quadra está ocupada
+    const verificarQuadraOcupada = (quadra, dataHora) => {
+        return fetch('http://localhost:3000/partidas')
+            .then(response => response.json())
+            .then(partidas => {
+                // Verificar se já existe uma partida para a mesma quadra e data
+                const partidaOcupada = partidas.some(partida =>
+                    partida.quadra === quadra &&
+                    partida.data === dataHora
+                );
 
-            if (response.ok) {
-                carregarPartidas();  // Atualizar a lista após adicionar o jogador
-            } else {
-                alert('Erro ao adicionar jogador');
-            }
-        } catch (err) {
-            console.error('Erro ao adicionar jogador:', err);
-        }
+                return partidaOcupada;
+            })
+            .catch(err => {
+                console.error('Erro ao verificar a quadra:', err);
+                return false;  // Se houver erro, assumimos que não está ocupada
+            });
     };
 
-    // Enviar requisição POST para criar uma nova partida
+    // Função para manipular o envio do formulário
     formPartida.addEventListener('submit', async (e) => {
-        e.preventDefault();
+        e.preventDefault();  // Previne o envio do formulário enquanto verificamos a disponibilidade
 
-        const novaPartida = {
-            nome: document.getElementById('titulo').value,
-            local: document.getElementById('local').value,
-            data: document.getElementById('dataHora').value,
-            jogadores: []  // Começa com uma lista vazia de jogadores
-        };
+        const quadra = document.getElementById('quadra').value;
+        const dataHora = document.getElementById('dataHora').value;
 
-        try {
-            const response = await fetch('http://localhost:3000/partidas', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(novaPartida)
-            });
+        // Verificar se a quadra já está ocupada
+        const quadraOcupada = await verificarQuadraOcupada(quadra, dataHora);
 
-            if (response.ok) {
-                carregarPartidas();  // Atualizar a lista de partidas após a criação
-            } else {
-                alert('Erro ao criar partida');
+        if (quadraOcupada) {
+            alert('A quadra selecionada já está ocupada nesse horário. Por favor, escolha outro horário ou quadra.');
+        } else {
+            // Se a quadra não estiver ocupada, enviar a requisição para criar a partida
+            const novaPartida = {
+                nome: document.getElementById('titulo').value,
+                quadra: quadra,
+                data: dataHora,
+                jogadores: []  // Começa com uma lista vazia de jogadores
+            };
+
+            try {
+                const response = await fetch('http://localhost:3000/partidas', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(novaPartida)
+                });
+
+                if (response.ok) {
+                    alert('Partida agendada com sucesso!');
+                    carregarPartidas();  // Atualiza a lista de partidas após a criação
+                } else {
+                    alert('Erro ao criar partida');
+                }
+            } catch (err) {
+                console.error('Erro ao criar partida:', err);
             }
-        } catch (err) {
-            console.error('Erro ao criar partida:', err);
         }
     });
 

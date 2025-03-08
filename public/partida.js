@@ -32,7 +32,7 @@ function resetTimer() {
     clearInterval(timer);
     minutos = 0;
     segundos = 0;
-    document.getElementById('tempo').innerHTML = "00:00:00";
+    document.getElementById('tempo').innerHTML = "00:00";
     document.getElementById('startBtn').disabled = false;
     document.getElementById('pauseBtn').disabled = true;
     document.getElementById('resetBtn').disabled = true;
@@ -51,7 +51,7 @@ function mudarIntervalo() {
 }
 
 function formatTime(minutos, segundos) {
-    return String(minutos).padStart(2, '0') + ':' + String(segundos).padStart(2, '0') + ':00';
+    return String(minutos).padStart(2, '0') + ':' + String(segundos).padStart(2, '0');
 }
 
 function updateProgressBar() {
@@ -62,55 +62,13 @@ function updateProgressBar() {
 }
 
 function incrementarGol(time) {
-    if (time == 1) {
+    if (time === 1) {
         golsTime1++;
-        document.getElementById('golsTime1').innerHTML = golsTime1;
-    } else {
+    } else if (time === 2) {
         golsTime2++;
-        document.getElementById('golsTime2').innerHTML = golsTime2;
     }
+
+    // Atualiza o placar no HTML
+    document.getElementById("golsTime1").textContent = golsTime1;
+    document.getElementById("golsTime2").textContent = golsTime2;
 }
-
-function salvarHistorico() {
-    const resultado = {
-        data: new Date().toLocaleString(),
-        golsTime1: golsTime1,
-        golsTime2: golsTime2,
-        tempo: formatTime(minutos, segundos),
-    };
-
-    let historico = JSON.parse(localStorage.getItem('historico')) || [];
-    historico.push(resultado);
-    localStorage.setItem('historico', JSON.stringify(historico));
-
-    alert('Histórico Salvo!');
-}
-
-function mostrarHistorico() {
-    const historico = JSON.parse(localStorage.getItem('historico')) || [];
-    const tabelaHistorico = document.getElementById('tabelaHistorico');
-
-    tabelaHistorico.innerHTML = '';
-    historico.forEach(item => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${item.data}</td>
-            <td>${item.golsTime1} - ${item.golsTime2}</td>
-            <td>${item.tempo}</td>
-        `;
-        tabelaHistorico.appendChild(tr);
-    });
-}
-
-// Adicionar interação do botão "Histórico" na Navbar
-document.getElementById('historicoLink').addEventListener('click', () => {
-    document.getElementById('partida').style.display = 'none';
-    document.getElementById('historico').style.display = 'block';
-    mostrarHistorico();  // Exibe o histórico quando entrar na página
-});
-
-// Adicionar interação do botão "Partida" na Navbar
-document.getElementById('partidaLink').addEventListener('click', () => {
-    document.getElementById('historico').style.display = 'none';
-    document.getElementById('partida').style.display = 'block';
-});
