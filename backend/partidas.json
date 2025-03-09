@@ -1,38 +1,21 @@
 [
   {
-    "id": 1741382969990,
-    "nome": "Samuel Marcos",
-    "quadra": "Quadra 2",
-    "data": "2025-03-26T20:30",
+    "id": 1741534974367,
+    "nome": "Sávio Lopes",
+    "quadra": "Quadra 1",
+    "data": "2025-03-26T07:00",
     "jogadores": [
-      {
-        "nome": "Sávio",
-        "telefone": "83 9926-1678"
-      },
-      {
-        "nome": "Samuel",
-        "telefone": "83 991357876"
-      },
       {
         "nome": "Sávio",
         "telefone": "83 9932-1801"
-      }
-    ]
-  },
-  {
-    "id": 1741385672194,
-    "nome": "Sávio Lopes",
-    "quadra": "Quadra 1",
-    "data": "2025-03-28T19:00",
-    "email": "saviolopes@gmail.com",
-    "jogadores": [
+      },
       {
         "nome": "Samuel",
         "telefone": "83 99135-7876"
       },
       {
         "nome": "Alex",
-        "telefone": "83 99255-2856"
+        "telefone": "83 9953-1802"
       }
     ]
   }

@@ -4,23 +4,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const configurarDataHoraMinima = () => {
         const dataHoraInput = document.getElementById('dataHora');
-
-        // Obtém a data e hora atuais no formato YYYY-MM-DDThh:mm
+    
+        // Obtém a data e hora atuais
         const agora = new Date();
+        agora.setMinutes(0);
+        agora.setSeconds(0);
+    
+        // Se a hora atual for antes das 7h, define como 7h
+        if (agora.getHours() < 7) {
+            agora.setHours(7);
+        }
+    
+        // Se já passou das 21h, avança para o dia seguinte às 07h
+        if (agora.getHours() >= 21) {
+            agora.setDate(agora.getDate() + 1);
+            agora.setHours(7);
+        }
+    
+        // Converte para o formato YYYY-MM-DDTHH:MM
         const ano = agora.getFullYear();
-        const mes = String(agora.getMonth() + 1).padStart(2, '0'); // Meses começam de 0
+        const mes = String(agora.getMonth() + 1).padStart(2, '0');
         const dia = String(agora.getDate()).padStart(2, '0');
         const hora = String(agora.getHours()).padStart(2, '0');
-        const minuto = String(agora.getMinutes()).padStart(2, '0');
-
-        const dataHoraAtual = `${ano}-${mes}-${dia}T${hora}:${minuto}`;
-
-        // Definindo a data mínima
-        dataHoraInput.setAttribute('min', dataHoraAtual);
+    
+        const dataHoraMinima = `${ano}-${mes}-${dia}T${hora}:00`;
+    
+        // Define o valor mínimo no input
+        dataHoraInput.setAttribute('min', dataHoraMinima);
+        dataHoraInput.setAttribute('step', '3600'); // Passo de 1 hora (3600 segundos)
+    
+        // Adiciona um evento para impedir horários fora do intervalo
+        dataHoraInput.addEventListener('input', (event) => {
+            const dataSelecionada = new Date(event.target.value);
+            const horaSelecionada = dataSelecionada.getHours();
+    
+            if (horaSelecionada < 7 || horaSelecionada >= 21) {
+                alert("Selecione um horário entre 07:00 e 21:00.");
+                event.target.value = ""; // Limpa o input se horário for inválido
+            }
+        });
     };
-
+    
     // Configurar a data mínima ao carregar a página
     configurarDataHoraMinima();
+
 
     // Função para carregar partidas
     const carregarPartidas = async () => {
