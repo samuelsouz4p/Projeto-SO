@@ -1,3 +1,16 @@
+document.getElementById("formPartida").addEventListener("submit", function(event) {
+    event.preventDefault(); // Evita o envio tradicional do formulário
+
+    const nome = document.getElementById("titulo").value;
+    const quadra = document.getElementById("quadra").value;
+    const dataHora = document.getElementById("dataHora").value;
+    const email = document.getElementById("email").value;
+
+
+    window.location.href = "pagamento.html";
+});
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const formPartida = document.getElementById('formPartida');
     const listaPartidas = document.getElementById('listaPartidas');

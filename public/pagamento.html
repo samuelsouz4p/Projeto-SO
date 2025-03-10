@@ -8,18 +8,72 @@
     <link rel="icon" type="image/png" href="Icon.png">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <a href="index.html">
-                <img src="FutStart.png" alt="Logo">
-            </a>
-        </div>
+<!-- Navbar existente -->
+<nav class="navbar">
+    <div class="logo">
+        <a href="index.html">
+            <img src="FutStart.png" alt="Logo">
+        </a>
+    </div>
+    <ul>
+        <li><a href="partida.html">Partida</a></li>
+        <li><a href="pagamento.html">Pagamento</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+    </ul>
+</nav>
 
-        <ul>
-            <li><a href="partida.html">Partida</a></li>
-            <li><a href="pagamento.html">Pagamento</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-        </ul>
-    </nav>
+<!-- Conteúdo da página de pagamento -->
+<div class="container">
+    <!-- Header com título e imagem do logo PIX -->
+    <div class="pix-header">
+        <h3>Pagamento via PIX</h3>
+        <img src="logo-pix.png" alt="Logo PIX" class="img-fluid" style="max-width: 50px;">
+    </div>
+
+    <p>Escaneie o QR Code abaixo para realizar o pagamento:</p>
+    <!-- Imagem do QR Code com efeito hover e clique -->
+    <img src="qrcode-pix.png" alt="QR Code PIX" class="img-fluid qr-click">
+
+    <p>Ou copie e cole a chave PIX:</p>
+    <!-- Campo de texto para a chave PIX -->
+    <input
+            type="text"
+            id="pixCode"
+            class="form-control"
+            value="00020126360014BR.GOV.BCB.PIX0114+55839992616785204000053039865802BR5925Savio Lopes Vieira e Silv6009SAO PAULO62140510HvZlbhDTPh6304F665"
+            readonly
+    >
+    <!-- Botão para copiar o código PIX -->
+    <button class="btn" onclick="copyPix()">Copiar Código PIX</button>
+</div>
+
+<!-- Overlay para zoom no QR Code com fundo desfocado -->
+<div id="qr-overlay">
+    <img src="qrcode-pix.png" alt="QR Code PIX Zoom">
+</div>
+
+<script>
+    // Função para copiar o código PIX
+    function copyPix() {
+        const inputPix = document.getElementById("pixCode");
+        inputPix.select();
+        document.execCommand("copy");
+        alert("Código PIX copiado!");
+    }
+
+    // Ativa o overlay com zoom no QR Code e desfoca o fundo
+    document.addEventListener("DOMContentLoaded", function() {
+        const qrImage = document.querySelector(".qr-click");
+        const overlay = document.getElementById("qr-overlay");
+
+        qrImage.addEventListener("click", function() {
+            overlay.classList.add("active");
+        });
+
+        overlay.addEventListener("click", function() {
+            overlay.classList.remove("active");
+        });
+    });
+</script>
 </body>
 </html>
