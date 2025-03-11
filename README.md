@@ -4,7 +4,7 @@ Este é um projeto de gerenciamento de partidas de futebol para uma arena esport
 
 Funcionalidades:
 
-Criar Partidas: É possível criar novas partidas, especificando o título, quadra, data e horário da partida.
+Criar Partidas: É possível criar novas partidas, especificando o título, quadra, data e horário da partida (após a partida criada o usuário recebe um código via email para confirmação da marcação da partida).
 
 Verificar Disponibilidade de Quadra: O sistema verifica se a quadra selecionada já está ocupada naquele horário.
 
@@ -21,14 +21,14 @@ Tecnologias Utilizadas:
 Frontend: HTML, CSS, JavaScript.
 Backend: Node.js, Express.
 Banco de Dados: Armazenamento em JSON (para simplificação do projeto).
+
 Bibliotecas:
 Frontend: Bootstrap (para estilização e componentes prontos).
 Backend: Nodemailer (usada para enviar e-mails a partir de uma aplicação back-end);
 Handlebars (permite que você crie templates de e-mail);
 
-
 Como Rodar o Projeto:
 
 Pré-requisitos
-Node.js (v12 ou superior)
-npm (gerenciador de pacotes do Node.js)
+Node.js (v12 ou superior);
+npm (gerenciador de pacotes do Node.js).
