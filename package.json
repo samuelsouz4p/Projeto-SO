@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "express-handlebars": "^8.0.1",
+    "nodemailer": "^6.10.0",
+    "nodemon": "^3.1.9"
+  },
+  "name": "futstart---so",
+  "version": "1.0.0",
+  "description": "<<<<<<< HEAD\r # Projeto-SO\r =======",
+  "main": "server.js",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "nodemon ./backend/server.jsC",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

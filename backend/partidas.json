@@ -1,30 +1,15 @@
 [
   {
-    "id": 1741534974367,
-    "nome": "Sávio Lopes",
+    "id": 1741716804404,
+    "nome": "Samuel Souza",
     "quadra": "Quadra 1",
-    "data": "2025-03-26T07:00",
+    "data": "2025-03-14T15:00",
+    "email": "samuelmarcos335@gmail.com",
     "jogadores": [
       {
         "nome": "Sávio",
-        "telefone": "83 9932-1801"
-      },
-      {
-        "nome": "Samuel",
-        "telefone": "83 99135-7876"
-      },
-      {
-        "nome": "Alex",
-        "telefone": "83 9953-1802"
+        "telefone": "83 991346578"
       }
     ]
-  },
-  {
-    "id": 1741653240396,
-    "nome": "Lucas Paulo da Silva",
-    "quadra": "Quadra 1",
-    "data": "2025-03-11T17:00",
-    "email": "lp152659@gmail.com",
-    "jogadores": []
   }
 ]
