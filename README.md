@@ -1,37 +1,49 @@
-Projeto - FutStart
+# FutStart - Gerenciamento de Partidas de Futebol
 
 Este é um projeto de gerenciamento de partidas de futebol para uma arena esportiva. O sistema permite criar, listar, editar e remover partidas, além de permitir que os jogadores confirmem sua presença e adicionem seus dados (nome e telefone) para cada partida.
 
-Funcionalidades:
+## Funcionalidades
 
-Criar Partidas: É possível criar novas partidas, especificando o título, quadra, data e horário da partida (após a partida criada o usuário recebe um código via email para confirmação da marcação da partida).
+- **Criar Partidas**: É possível criar novas partidas, especificando o título, quadra, data e horário da partida. Após a criação, o usuário recebe um código via e-mail para confirmação da marcação da partida.
+  
+- **Verificar Disponibilidade de Quadra**: O sistema verifica se a quadra selecionada já está ocupada naquele horário.
+  
+- **Listar Partidas**: Todas as partidas criadas são listadas na página principal, com detalhes como nome, quadra, data e hora.
+  
+- **Adicionar Jogadores**: Para cada partida, os organizadores podem adicionar jogadores, informando seus nomes e telefones.
+  
+- **Remover Partidas e Jogadores**: É possível remover partidas e jogadores de cada partida existente.
+  
+- **Horário de Jogo**: O sistema define um horário mínimo para as partidas (a partir das 7h) e permite selecionar horários em intervalos de 1 hora.
 
-Verificar Disponibilidade de Quadra: O sistema verifica se a quadra selecionada já está ocupada naquele horário.
+- **Página de Pagamento**: Leitura ou cópia de código QR para pagamento via Pix.
 
-Listar Partidas: Todas as partidas criadas são listadas na página principal, com detalhes como nome, quadra, data e hora.
+## Tecnologias Utilizadas
 
-Adicionar Jogadores: Para cada partida, os organizadores podem adicionar jogadores, informando seus nomes e telefones.
+### Frontend
+- **HTML**: Para a estrutura da página.
+- **CSS**: Para estilização e layout.
+- **JavaScript**: Para funcionalidades dinâmicas e manipulação do DOM.
+- **Bootstrap**: Framework de CSS para componentes prontos e responsividade.
 
-Remover Partidas e Jogadores: É possível remover partidas e jogadores de cada partida existente.
+### Backend
+- **Node.js**: Ambiente de execução de JavaScript no servidor.
+- **Express**: Framework para criação de servidores HTTP.
+- **Nodemailer**: Biblioteca para envio de e-mails, utilizada para enviar códigos de confirmação de partidas.
+- **Handlebars**: Biblioteca para templating de e-mails (utilizada para enviar e-mails com conteúdo dinâmico).
 
-Horário de Jogo: O sistema define um horário mínimo para as partidas (a partir das 7h) e permite selecionar horários em intervalos de 1 hora.
+### Banco de Dados
+- **JSON**: Armazenamento de dados simples em formato JSON (para simplificação do projeto).
 
-Página de Pagamento:
-Ler ou copiar código QR para pagamento via pix;
+## Como Rodar o Projeto
 
-Tecnologias Utilizadas:
+### Pré-requisitos
 
-Frontend: HTML, CSS, JavaScript.
-Backend: Node.js, Express.
-Banco de Dados: Armazenamento em JSON (para simplificação do projeto).
+- **Node.js** (v12 ou superior)
+- **npm** (gerenciador de pacotes do Node.js)
 
-Bibliotecas:
-Frontend: Bootstrap (para estilização e componentes prontos).
-Backend: Nodemailer (usada para enviar e-mails a partir de uma aplicação back-end);
-Handlebars (permite que você crie templates de e-mail);
+### Passos
 
-Como Rodar o Projeto:
-
-Pré-requisitos
-Node.js (v12 ou superior);
-npm (gerenciador de pacotes do Node.js).
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/samuelsouz4p/Projeto-SO.git
