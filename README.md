@@ -49,11 +49,9 @@ Este é um projeto de gerenciamento de partidas de futebol para uma arena esport
    git clone https://github.com/samuelsouz4p/Projeto-SO.git
 
 2. Navegue até o diretório do projeto:
-   ```bash
   cd FutStart - SO
-
+  
 4. Instale as dependências:
-  ```bash
   npm install
 
 5. Inicie o servidor:
