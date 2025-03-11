@@ -16,6 +16,9 @@ Remover Partidas e Jogadores: É possível remover partidas e jogadores de cada 
 
 Horário de Jogo: O sistema define um horário mínimo para as partidas (a partir das 7h) e permite selecionar horários em intervalos de 1 hora.
 
+Página de Pagamento:
+Ler ou copiar código QR para pagamento via pix;
+
 Tecnologias Utilizadas:
 
 Frontend: HTML, CSS, JavaScript.
