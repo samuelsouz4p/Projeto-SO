@@ -73,10 +73,7 @@ body {
     margin-bottom: 15px;
     margin-top: 25px;
 }
-.card{
-    display: flex;
-    justify-content: center;
-}
+
 .card-verde {
     background-color: #1e7e34; /* Cor verde */
     color: white; /* Texto branco */

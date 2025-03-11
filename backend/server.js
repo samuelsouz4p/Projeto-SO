@@ -2,16 +2,11 @@ const express = require('express');
 const fs = require('fs');
 const cors = require('cors');  // Importando o middleware CORS
 const app = express();
-const path = require('path');
 const PORT = 3000;
 const DATA_FILE = 'partidas.json';
-const nodemailer = require('nodemailer')
-const crypto = require('crypto')
-const dotenv = require('dotenv').config()
 
 app.use(cors());  // Permite requisições de qualquer origem
 app.use(express.json());
-app.use(express.urlencoded({extended: true}))
 
 // Função para ler o arquivo JSON
 const lerPartidas = () => {
@@ -37,46 +32,10 @@ app.get('/partidas', (req, res) => {
 // Rota para criar uma nova partida
 app.post('/partidas', (req, res) => {
     const partidas = lerPartidas();
-    const novaPartida = { 
-        id: Date.now(), 
-        ...req.body, 
-        jogadores: [] 
-    };
-    const { email } = req.body
-    const passLength = 3
-    
-    //Criando senha para passar para o email
-    const passwordAccess = crypto.randomBytes(passLength).toString('hex').slice(0, 5)
-
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.USER_EMAIL,
-            pass: process.env.USER_PASS
-        }
-    })
-    
-    transporter.sendMail({
-        from: process.env.USER_EMAIL,
-        to: email,
-        subject: `Dados para acesso à quadra`,
-        html: ` <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #28a745; color: rgb(255, 255, 255);">
-                    <h1 style="color: rgb(255, 255, 255);">Obrigado por usar nossos serviços!</h1> <hr>
-                    <h3>Olá!! essa é a sua senha de acesso à quadra <i style="text-decoration: underline;">${passwordAccess}</i>, o acesso só será liberado com a senha!</h3>
-                    <div style="display: flex; justify-content: center; align-items: center; font-size: 2vw;">
-                        <img src="https://cdn-icons-png.flaticon.com/128/190/190411.png" alt="Logo" width="150" style="display: block; margin: auto; border-radius: 5px;">
-                    </div>
-                </div>`,
-    })
-    .then(() => {
-        partidas.push(novaPartida);
-        salvarPartidas(partidas);
-
-        res.status(201).json(novaPartida);
-    })
-    .catch((err) => {
-        console.log(err)
-    }) 
+    const novaPartida = { id: Date.now(), ...req.body, jogadores: [] };
+    partidas.push(novaPartida);
+    salvarPartidas(partidas);
+    res.status(201).json(novaPartida);
 });
 
 // Rota para adicionar um jogador a uma partida
@@ -134,15 +93,6 @@ app.delete('/partidas/:id', (req, res) => {
         res.status(404).json({ message: "Partida não encontrada" });
     }
 });
-
-//Configuração de arquivos estáticos
-app.use(express.static(path.join(__dirname, '../public')))
-
-//Configuração de rota principal
-app.get('/', (req, res) => {
-    res.sendFile('index.html')
-})
-
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);

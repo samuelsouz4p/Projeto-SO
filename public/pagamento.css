@@ -1,11 +1,18 @@
+/* Reset e evitar rolagem horizontal */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Estilos gerais do corpo */
 body {
     background: linear-gradient(to bottom, #0f3d0f, #1e7e34);
     font-family: 'Arial', sans-serif;
     text-align: center;
-    padding: 0;
-    margin: 0;
 }
 
+/* Navbar */
 .navbar {
     background-color: #1e7e34;
     position: absolute;
@@ -14,18 +21,20 @@ body {
     width: 100%;
     z-index: 1000;
     display: flex;
-    justify-content: center; /* Centraliza os itens */
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     padding: 0 20px;
     height: 90px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
 }
 
 .navbar .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 220px; /* Espaço entre a logo e os botões */
+    margin-right: 220px;
 }
 
 .navbar .logo img {
@@ -38,9 +47,9 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center; /* Centraliza os botões */
+    justify-content: center;
     align-items: center;
-    gap: 30px; /* Espaçamento entre os botões */
+    gap: 30px;
 }
 
 .navbar li {
@@ -54,4 +63,120 @@ body {
     padding: 14px 20px;
     text-decoration: none;
     font-weight: bold;
+}
+
+/* Container para o conteúdo da página de pagamento */
+.container {
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: calc(100vh - 90px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Header com título e imagem do logo PIX */
+.pix-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.pix-header h3 {
+    margin: 0;
+    line-height: 1;
+    font-size: 28px;
+    color: white;
+}
+
+/* Títulos e parágrafos */
+p {
+    font-size: 18px;
+    color: white;
+}
+
+/* Estilos para as imagens */
+.img-fluid {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    margin: 20px auto;
+}
+
+/* QR Code clicável: cursor e efeito hover */
+.qr-click {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.qr-click:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos para o campo de texto da chave PIX */
+input#pixCode {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Estilos para o botão de copiar */
+button.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+button.btn:hover {
+    background-color: #218838;
+}
+
+/* Garante que todas as imagens não ultrapassem a largura do contêiner */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Overlay para zoom no QR Code com fundo desfocado */
+#qr-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    overflow: auto;
+}
+
+#qr-overlay.active {
+    display: flex;
+}
+
+#qr-overlay img {
+    transition: transform 0.3s ease;
+    max-width: 80%;
+    max-height: 80%;
+    transform: scale(1);
+}
+
+#qr-overlay.active img {
+    transform: scale(1.1);
 }
