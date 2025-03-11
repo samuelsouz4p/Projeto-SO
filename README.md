@@ -18,10 +18,14 @@ Horário de Jogo: O sistema define um horário mínimo para as partidas (a parti
 
 Tecnologias Utilizadas:
 
-Frontend: HTML, CSS, JavaScript
-Backend: Node.js, Express
-Banco de Dados: Armazenamento em JSON (para simplificação do projeto)
-Bibliotecas: Bootstrap (para estilização e componentes prontos)
+Frontend: HTML, CSS, JavaScript.
+Backend: Node.js, Express.
+Banco de Dados: Armazenamento em JSON (para simplificação do projeto).
+Bibliotecas:
+Frontend: Bootstrap (para estilização e componentes prontos).
+Backend: Nodemailer (usada para enviar e-mails a partir de uma aplicação back-end);
+Handlebars (permite que você crie templates de e-mail);
+
 
 Como Rodar o Projeto:
 
